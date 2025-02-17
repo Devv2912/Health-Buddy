@@ -1,0 +1,199 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container */
+.container {
+    display: flex;
+    background-color: white;
+    width: 800px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Signup Form */
+.signup-form {
+    width: 50%;
+    padding: 30px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Toggle Buttons */
+.toggle-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.toggle-buttons button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #eee;
+}
+
+.toggle-buttons .active {
+    background-color: #28a745;
+    color: white;
+}
+
+/* Google Login Button */
+.google-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0a0b0b;
+    color: white;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.google-login img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+/* OR Divider */
+.or-divider {
+    text-align: center;
+    margin: 10px 0;
+    font-weight: bold;
+    color: #777;
+}
+
+/* Form Inputs */
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form select:hover {
+    background-color: #f0f8ff;
+}
+
+.form select.dragover {
+    background-color: #d0e8ff;
+    border-color: #0056b3;
+}
+
+/* Signup Button */
+.signup-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.signup-btn:hover {
+    background-color: #218838;
+}
+
+/* Login Link */
+.login-link {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.login-link a {
+    color: #28a745;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Welcome Section */
+.welcome-section {
+    width: 50%;
+    background-color: #f8f9fa;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.welcome-section p {
+    color: #555;
+}
+
+
+.welcome-section img {
+    width: 350px; /* Adjust image size */
+    height: 480px;
+    margin-bottom: 10px; /* Space between image and text */
+    background-size: cover; /* Covers entire screen */
+    background-position: center; /* Centers image */
+    background-repeat: no-repeat; /* Prevents repeating */
+    background-attachment: fixed; 
+    position: absolute;
+    
+}
+
+.welcome-section h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.welcome-section p {
+    font-size: 18px;
+    color: #161616;
+    max-width: 200%;
+    text-align: left;
+}
+
+
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    width: 300px;
+    height: 130px;
+    left: 66.54%;
+    right: 10%;
+    transform: translate(-75%, -50%); 
+    background: rgba(233, 230, 230, 0.6); 
+    color: white;
+    padding: 10px 15px;
+    font-size: 28px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+
+

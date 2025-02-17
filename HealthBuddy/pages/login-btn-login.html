@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - Medi-Chain</title>
+    <link rel="stylesheet" href="../css/login-btn-login.css">
+</head>
+<body>
+    <div class="container">
+        <div class="signup-form">
+            <h2>LOGIN </h2>
+            <div class="toggle-buttons">
+                <button id="patient-btn" class="active">Patient</button>
+                <button id="doctor-btn">Doctor</button>
+            </div>
+            <button class="google-login">
+                <img src="../images/google-logo.png" alt="Google Icon">
+                Login with Google
+            </button>
+            <p class="or-divider">OR</p>
+
+            <!-- Patient Login -->
+            <form id="patient-form">
+            <b><h3><u><i>Enter your Credentials-</i></u></h3></b>
+           
+           
+     
+            <input type="email" placeholder="Email">
+            <br/>
+            <input type="password" placeholder="Password">
+
+            <a href="pat-login.html">
+                <button type="submit" class="signup-btn">Sign in as Patient</button>
+            </a>
+
+        
+            </form>
+
+            <!-- Doctor Login -->
+            <form id="doctor-form" style="display: none;">
+                <b><h3><u><i>Enter your Credentials-</i></u></h3></b>
+               
+               
+                <input type="email" placeholder="Email">
+                <br/>
+                <input type="password" placeholder="Password">
+                <a href="doc-login.html">
+                    <button class="signup-btn">Sign in as Doctor</button>
+                </a>
+                </form>
+        
+
+
+            <p class="login-link">Doesn't have an account? <a href="login-btn.html">Sign Up</a></p>
+        </div>
+        <div class="welcome-section">
+            <img src="../images/medicine bg.jpeg" alt="HealthBuddy Logo">
+            <h2>HealthBuddy</h2>
+            <div class="text-overlay"><p>"Your health, your control – HealthBuddy simplifies care, secures your records, and connects you to better healthcare anytime, anywhere."</p>
+        </div>
+    </div>
+    </div>
+
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/firebase.js" type="module"></script>
+</body>
+</html>
+

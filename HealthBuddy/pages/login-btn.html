@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - Medi-Chain</title>
+    <link rel="stylesheet" href="../css/login-btn.css">
+    
+</head>
+<body>
+    <div class="container">
+        <div class="signup-form">
+            <h2>Create a free account as a</h2>
+            <div class="toggle-buttons">
+                <button id="patient-btn" class="active">Patient</button>
+                <button id="doctor-btn">Doctor</button>
+            </div>
+            <button class="google-login">
+                <img src="../images/google-logo.png" alt="Google Icon">
+                Login with Google
+            </button>
+            <p class="or-divider">OR</p>
+
+            <!-- Patient Signup Form -->
+            <form id="patient-form">
+                <input type="text" placeholder="First Name" required >
+                <input type="text" placeholder="Last Name" required>
+                <input type="text" placeholder="Phone Number" required>
+                <input type="text" placeholder="Alternate Number" required>
+                <input type="email" placeholder="Email Address" required>
+                <input type="password" placeholder="Create Password" required>
+
+                <select id="gender" name="gender" required>
+                        <option value="" disabled selected>Select your Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                        <option value="prefer_not_say">Prefer not to say</option>
+                    </select>
+                
+                <button type="submit" class="signup-btn">Sign up as Patient</button>
+
+            </form>
+
+            <!-- Doctor Signup Form (Hidden Initially) -->
+            <form id="doctor-form" style="display: none;">
+                <input type="text" placeholder="First Name" required>
+                <input type="text" placeholder="Last Name" required>
+                <input type="text" placeholder="Phone NUmber" required>
+                <input type="email" placeholder="Email Address" required>
+                <input type="password" placeholder="Create Password" required>
+                <input type="text" placeholder="Medical License Number" required>
+
+                <select id="gender" name="gender" required>     
+                    <option value="" disabled selected>Select your Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                    <option value="prefer_not_say">Prefer not to say</option>
+                </select>
+
+                <select name="specialization" id="specialization">
+                    <option value="" disabled selected>Select Specialization</option>
+                    <option value="Anesthesiologist">Anesthesiologist</option>
+                    <option value="Cardiologist">Cardiologist</option>
+                    <option value="Cardiothoracic Surgeon">Cardiothoracic Surgeon</option>
+                    <option value="Cosmetic Dermatologist">Cosmetic Dermatologist</option>
+                    <option value="Dermatologist">Dermatologist</option>
+                    <option value="Emergency Medicine Physician">Emergency Medicine Physician</option>
+                    <option value="Endocrinologist">Endocrinologist</option>
+                    <option value="Family Medicine">Family Medicine</option>
+                    <option value="Gastroenterologist">Gastroenterologist</option>
+                    <option value="General Physician">General Physician</option>
+                    <option value="General Surgeon">General Surgeon</option>
+                    <option value="Gynecologist">Gynecologist</option>
+                    <option value="Infectious Disease Specialist">Infectious Disease Specialist</option>
+                    <option value="Intensive Care Specialist">Intensive Care Specialist</option>
+                    <option value="Internal Medicine">Internal Medicine</option>
+                    <option value="Medical Oncologist">Medical Oncologist</option>
+                    <option value="Neonatologist">Neonatologist</option>
+                    <option value="Nephrologist">Nephrologist</option>
+                    <option value="Neurosurgeon">Neurosurgeon</option>
+                    <option value="Neurologist">Neurologist</option>
+                    <option value="Obstetrician">Obstetrician</option>
+                    <option value="Ophthalmic Surgeon">Ophthalmic Surgeon</option>
+                    <option value="Orthopedic Surgeon">Orthopedic Surgeon</option>
+                    <option value="Pain Management Specialist">Pain Management Specialist</option>
+                    <option value="Pediatrician">Pediatrician</option>
+                    <option value="Plastic Surgeon">Plastic Surgeon</option>
+                    <option value="Psychiatrist">Psychiatrist</option>
+                    <option value="Pulmonologist">Pulmonologist</option>
+                    <option value="Radiation Oncologist">Radiation Oncologist</option>
+                    <option value="Rheumatologist">Rheumatologist</option>
+                    <option value="Sports Medicine Physician">Sports Medicine Physician</option>
+                    <option value="Surgical Oncologist">Surgical Oncologist</option>
+                    <option value="Urologist">Urologist</option>
+                </select>
+                
+
+                <button type="submit" class="signup-btn">Sign up as Doctor</button>
+            </form>
+
+            <p class="login-link">Already have an account? <a href="login-btn-login.html">Log in</a></p>
+        </div>
+        <div class="welcome-section">
+            <img src="../images/medicine bg.jpeg" alt="HealthBuddy Logo">
+            <h2>HealthBuddy</h2>
+            <div class="text-overlay"><p>"Your health, your control – HealthBuddy simplifies care, secures your records, and connects you to better healthcare anytime, anywhere."</p>
+        </div>
+    </div>
+    </div>
+
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/firebase.js" type="module"></script>
+</body>
+</html>

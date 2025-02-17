@@ -1,0 +1,119 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif; /* Elegant font */
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background: white;
+    padding: 15px 30px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.logout-btn {
+    background: red;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Profile Container */
+.container {
+    max-width: 700px; /* Increased width */
+    padding: 40px; /* Increased padding */
+    margin: 50px auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Input Groups */
+.input-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px 0; /* More spacing */
+}
+
+.input-group label {
+    font-size: 18px; /* Bigger text */
+    font-weight: bold;
+    color: #444;
+    flex: 1;
+}
+
+.input-group input,
+.input-group select {
+    flex: 2;
+    padding: 12px; /* Bigger input fields */
+    font-size: 16px; /* Bigger text */
+    font-weight: 500;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Buttons */
+.submit-btn, .edit-btn {
+    background: #007bff;
+    color: white;
+    padding: 12px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    width: 100%;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.submit-btn:hover, .edit-btn:hover {
+    background: #0056b3;
+}
+
+/* Profile Display */
+.hidden {
+    display: none;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-top: 10px;
+    border: 3px solid #007bff;
+}

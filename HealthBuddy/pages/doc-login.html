@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard</title>
+    <link rel="stylesheet" href="../css/doc-login.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <h2 class="logo">HealthBuddy</h2>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Patient Records</a></li>
+            <li><a href="#">Appointments</a></li>
+            <li><a href="#">Medical Reports</a></li>
+            <li><a href="#">Resources</a></li>
+            <li><a href="../index.html" class="logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Doctor Dashboard Section -->
+    <div class="dashboard">
+        <h1>Welcome, Doctor!</h1>
+        <p>Manage your patients and appointments with ease.</p>
+
+        <!-- Feature Cards -->
+        <div class="dashboard-features">
+
+            <a href="doctor_profile.html" class="card">
+                <div class="icon">🙎🏻‍♂️</div>
+                    <h3>Your Profile</h3>
+                    <p>View or edit your profile.</p>
+                
+            </a>
+            
+
+            <div class="card">
+                <div class="icon">🩺</div>
+                <h3>Manage Patients</h3>
+                <p>View and update patient records and medical history.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">📅</div>
+                <h3>Appointments</h3>
+                <p>Schedule and manage telehealth consultations.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">📄</div>
+                <h3>Medical Reports</h3>
+                <p>Analyze patient test results and generate reports.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">📚</div>
+                <h3>Medical Resources</h3>
+                <p>Access latest research, case studies, and guidelines.</p>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
+        const auth = getAuth();
+        const logoutBtn = document.querySelector(".logout");
+        if (logoutBtn) {
+            logoutBtn.addEventListener("click", function(e) {
+                e.preventDefault();
+                signOut(auth)
+                    .then(() => {
+                        window.location.href = "../index.html";
+                    })
+                    .catch((error) => {
+                        console.error("Sign out error:", error);
+                    });
+            });
+        }
+    </script>
+
+</body>
+</html>

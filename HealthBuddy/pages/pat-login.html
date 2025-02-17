@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard</title>
+    <link rel="stylesheet" href="../css/pat-login.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <h2 class="logo">HealthBuddy</h2>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Health Monitoring</a></li>
+            <li><a href="#">Medication Reminders</a></li>
+            <li><a href="#">Telehealth</a></li>
+            <li><a href="#">Education Hub</a></li>
+            <li><a href="../index.html" class="logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Dashboard Welcome Section -->
+    <div class="dashboard">
+        <h1>Welcome, Patient!</h1>
+        <p>Your health, simplified.</p>
+
+        <!-- Feature Cards -->
+        <div class="dashboard-features">
+
+            <a href="patient_profile.html" class="card">
+                <div class="icon">🙎🏻‍♂️</div>
+                    <h3>Your Profile</h3>
+                    <p>View or edit your profile.</p>
+                
+            </a>
+
+            <a href="N/A" class="card">
+                <div class="icon">⛨</div>
+                <h3>Health Monitoring</h3>
+                <p>Track your vitals and get real-time feedback.</p>
+                
+            </a>
+
+            <a href="N/A" class="card">
+                <div class="icon">📚</div>
+                <h3>Track your Records</h3>
+                <p>Access your previous health records.</p>
+                
+            </a>
+
+            <a href="N/A" class="card">
+                <div class="icon">🩺</div>
+                <h3>Book Appointment</h3>
+                <p>Book your Appointment with India's best Doctors.</p>
+                
+            </a>
+
+
+            <a href="N/A" class="card">
+                <div class="icon">💊</div>
+                <h3>Medication Reminders</h3>
+                <p>Never miss a dose with smart alerts.</p>
+                
+            </a>
+
+
+            <a href="N/A" class="card">
+                <div class="icon">👨‍⚕️</div>
+                <h3>Telehealth Services</h3>
+                <p>Consult with healthcare professionals online.</p>
+                
+            </a>
+
+
+    </div>
+
+    <script type="module">
+      import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
+      const auth = getAuth();
+      const logoutBtn = document.querySelector(".logout");
+      if (logoutBtn) {
+        logoutBtn.addEventListener("click", function(e) {
+          e.preventDefault();
+          signOut(auth)
+            .then(() => {
+              window.location.href = "../index.html";
+            })
+            .catch((error) => {
+              console.error("Sign out error:", error);
+            });
+        });
+      }
+    </script>
+
+</body>
+</html>
