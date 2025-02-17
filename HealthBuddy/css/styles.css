@@ -160,7 +160,11 @@ nav ul li a:hover {
     color: #2563eb; /* Blue */
     margin-bottom: 15px;
 }
-
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
 /* FAQ Section */
 .faq {
     display: flex;

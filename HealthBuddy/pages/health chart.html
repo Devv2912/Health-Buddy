@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Monitoring</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .container {
+            max-width: 700px;
+            margin: auto;
+        }
+        .chart-container {
+            width: 100%;
+            height: 400px; /* Increased height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        canvas {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .input-section, .data-section {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 90%;
+            max-width: 300px;
+        }
+        button {
+            cursor: pointer;
+            width: 95%;
+            max-width: 320px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .btn-update {
+            background-color: #28a745;
+            color: white;
+        }
+        .btn-update:hover {
+            background-color: #218838;
+        }
+        .btn-reset {
+            background-color: #dc3545;
+            color: white;
+        }
+        .btn-reset:hover {
+            background-color: #c82333;
+        }
+        .data-card {
+            background-color: #f0f8ff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: inline-block;
+            width: 45%;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Weekly Health Monitoring</h2>
+        <div class="chart-container">
+            <canvas id="healthChart"></canvas>
+        </div>
+
+        <!-- Data Input Section -->
+        <div class="input-section">
+            <h3>Enter This Week's Health Data</h3>
+            <input type="number" id="bp" placeholder="Blood Pressure (mmHg)" required>
+            <input type="number" id="hr" placeholder="Heart Rate (BPM)" required>
+            <input type="number" id="weight" placeholder="Weight (kg)" required>
+            <input type="number" id="oxygen" placeholder="Oxygen Level (%)" required>
+            <button class="btn-update" onclick="updateHealthData()">Update Data</button>
+            <button class="btn-reset" onclick="resetHealthData()">Reset Data</button>
+        </div>
+
+        <!-- New Data Storage Card -->
+        <div class="data-section">
+            <h3>Saved Health Data:</h3>
+            <div id="dataCard" class="data-card">
+                <p>No data saved yet.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize health data with empty arrays
+        let healthData = JSON.parse(localStorage.getItem("latestHealthData")) || {
+            bloodPressure: [],
+            heartRate: [],
+            weight: [],
+            oxygenLevel: []
+        };
+
+        const ctx = document.getElementById('healthChart').getContext('2d');
+        
+        // Initialize the chart
+        let healthChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+                datasets: [
+                    {
+                        label: 'Blood Pressure (mmHg)',
+                        data: healthData.bloodPressure,
+                        borderColor: 'rgb(255, 99, 132)',
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Heart Rate (BPM)',
+                        data: healthData.heartRate,
+                        borderColor: 'rgb(54, 162, 235)',
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Weight (kg)',
+                        data: healthData.weight,
+                        borderColor: 'rgb(255, 206, 86)',
+                        backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Oxygen Level (%)',
+                        data: healthData.oxygenLevel,
+                        borderColor: 'rgb(75, 192, 192)',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: "Weekly Health Data",
+                        font: { size: 18 }
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: "Days of the Week"
+                        }
+                    },
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+
+        // Function to update health data
+        function updateHealthData() {
+            let bp = parseInt(document.getElementById('bp').value);
+            let hr = parseInt(document.getElementById('hr').value);
+            let weight = parseInt(document.getElementById('weight').value);
+            let oxygen = parseInt(document.getElementById('oxygen').value);
+
+            if (isNaN(bp) || isNaN(hr) || isNaN(weight) || isNaN(oxygen)) {
+                alert("Please enter valid values for all fields.");
+                return;
+            }
+
+            // Store only the latest 7 entries
+            if (healthData.bloodPressure.length >= 7) healthData.bloodPressure.shift();
+            if (healthData.heartRate.length >= 7) healthData.heartRate.shift();
+            if (healthData.weight.length >= 7) healthData.weight.shift();
+            if (healthData.oxygenLevel.length >= 7) healthData.oxygenLevel.shift();
+
+            // Add the new data for this week
+            healthData.bloodPressure.push(bp);
+            healthData.heartRate.push(hr);
+            healthData.weight.push(weight);
+            healthData.oxygenLevel.push(oxygen);
+
+            // Save to localStorage
+            localStorage.setItem("latestHealthData", JSON.stringify(healthData));
+
+            // Update chart
+            refreshChart();
+
+            // Save data to card
+            saveDataToCard(bp, hr, weight, oxygen);
+        }
+
+        // Refresh the chart with updated data
+        function refreshChart() {
+            healthChart.data.datasets[0].data = healthData.bloodPressure;
+            healthChart.data.datasets[1].data = healthData.heartRate;
+            healthChart.data.datasets[2].data = healthData.weight;
+            healthChart.data.datasets[3].data = healthData.oxygenLevel;
+            healthChart.update();
+        }
+
+        // Reset all data
+        function resetHealthData() {
+            if (confirm("Are you sure you want to reset all health data?")) {
+                healthData = {
+                    bloodPressure: [],
+                    heartRate: [],
+                    weight: [],
+                    oxygenLevel: []
+                };
+                localStorage.removeItem("latestHealthData");
+                refreshChart();
+                resetDataCard();
+            }
+        }
+
+        // Display the latest health data in the card
+        function saveDataToCard(bp, hr, weight, oxygen) {
+            const dataCard = document.getElementById('dataCard');
+            dataCard.innerHTML = `
+                <p><strong>Blood Pressure:</strong> ${bp} mmHg</p>
+                <p><strong>Heart Rate:</strong> ${hr} BPM</p>
+                <p><strong>Weight:</strong> ${weight} kg</p>
+                <p><strong>Oxygen Level:</strong> ${oxygen} %</p>
+            `;
+        }
+
+        // Reset data card content
+        function resetDataCard() {
+            const dataCard = document.getElementById('dataCard');
+            dataCard.innerHTML = `<p>No data saved yet.</p>`;
+        }
+    </script>
+
+</body>
+</html>

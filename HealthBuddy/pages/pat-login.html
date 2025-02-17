@@ -1,98 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patient Dashboard</title>
-    <link rel="stylesheet" href="../css/pat-login.css">
+    <title>HealthBuddy</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <!-- Google Fonts Link For Icons -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <script src="scripts/chatbot.js" defer></script>
 </head>
+
 <body>
+    <header>
+        <div class="logo">HealthBuddy</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="pages/educationhub.html">Education Hub</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <h2 class="logo">HealthBuddy</h2>
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Health Monitoring</a></li>
-            <li><a href="#">Medication Reminders</a></li>
-            <li><a href="#">Telehealth</a></li>
-            <li><a href="#">Education Hub</a></li>
-            <li><a href="../index.html" class="logout">Logout</a></li>
-        </ul>
-    </nav>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="title">Welcome Patient</h1>
+            <p class="subtitle">Your personalized companion for chronic disease management</p>
+            <button class="btn"
+                onclick="document.getElementById('features').scrollIntoView({ behavior: 'smooth' });">Get
+                Started</button>
+        </div>
+        <img src="images/mainimage.jpg" alt="HealthBuddy" class="hero-image">
+    </section>
 
-    <!-- Dashboard Welcome Section -->
-    <div class="dashboard">
-        <h1>Welcome, Patient!</h1>
-        <p>Your health, simplified.</p>
-
-        <!-- Feature Cards -->
-        <div class="dashboard-features">
-
-            <a href="patient_profile.html" class="card">
-                <div class="icon">🙎🏻‍♂️</div>
-                    <h3>Your Profile</h3>
-                    <p>View or edit your profile.</p>
-                
-            </a>
-
-            <a href="N/A" class="card">
-                <div class="icon">⛨</div>
+    <!-- Features Section -->
+    <div id="features" class="container">
+        <h2 class="section-title">Features</h2>
+        <div class="features">
+            <div class="card">
+                <div class="icon">💙</div>
                 <h3>Health Monitoring</h3>
                 <p>Track your vitals and get real-time feedback.</p>
-                
-            </a>
-
-            <a href="N/A" class="card">
-                <div class="icon">📚</div>
-                <h3>Track your Records</h3>
-                <p>Access your previous health records.</p>
-                
-            </a>
-
-            <a href="N/A" class="card">
-                <div class="icon">🩺</div>
-                <h3>Book Appointment</h3>
-                <p>Book your Appointment with India's best Doctors.</p>
-                
-            </a>
-
-
-            <a href="N/A" class="card">
+            </div>
+            <div class="card">
                 <div class="icon">💊</div>
                 <h3>Medication Reminders</h3>
                 <p>Never miss a dose with smart alerts.</p>
-                
-            </a>
-
-
-            <a href="N/A" class="card">
+            </div>
+            <div class="card">
                 <div class="icon">👨‍⚕️</div>
                 <h3>Telehealth Services</h3>
                 <p>Consult with healthcare professionals online.</p>
-                
-            </a>
-
-
+            </div>
+            <div class="card">
+                <div class="icon">📚</div>
+                <h3>Education Hub</h3>
+                <p>Access health resources and self-management tools.</p>
+            </div>
+            <div class="card">
+                <div class="icon">📅</div>
+                <h3>Appointment Scheduling</h3>
+                <p>Book and manage your appointments with ease.</p>
+            </div>
+            <div class="card">
+                <div class="icon">📈</div>
+                <h3>Progress Tracking</h3>
+                <p>Monitor your health progress over time.</p>
+            </div>
+        </div>
     </div>
 
-    <script type="module">
-      import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
-      const auth = getAuth();
-      const logoutBtn = document.querySelector(".logout");
-      if (logoutBtn) {
-        logoutBtn.addEventListener("click", function(e) {
-          e.preventDefault();
-          signOut(auth)
-            .then(() => {
-              window.location.href = "../index.html";
-            })
-            .catch((error) => {
-              console.error("Sign out error:", error);
-            });
-        });
-      }
-    </script>
+    <!-- Call to Action Section -->
+    <div id="call-to-action" class="container">
+        <h2 class="section-title">Join HealthBuddy Today</h2>
+        <p class="cta-text">Take control of your health with our comprehensive tools and resources. Sign up now and
+            start your journey to better health!</p>
+        <button class="btn" onclick="location.href='pages/signup.html'">Sign Up</button>
+    </div>
 
+    <!-- Blog/News Section -->
+    <div id="blog" class="container">
+        <h2 class="section-title">Latest News</h2>
+        <div class="blog-posts">
+            <div class="blog-post">
+                <h3>New Features in HealthBuddy</h3>
+                <p>We are excited to announce new features that will help you manage your health more effectively...</p>
+                <a href="#">Read more</a>
+            </div>
+            <div class="blog-post">
+                <h3>Tips for Managing Chronic Diseases</h3>
+                <p>Discover practical tips and strategies for managing chronic diseases and improving your quality of
+                    life...</p>
+                <a href="#">Read more</a>
+            </div>
+            <div class="blog-post">
+                <h3>Success Stories from HealthBuddy Users</h3>
+                <p>Read inspiring stories from our users who have successfully managed their chronic conditions with
+                    HealthBuddy...</p>
+                <a href="#">Read more</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div id="faq" class="container">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq">
+            <div class="faq-item">
+                <h3>What is chronic disease management?</h3>
+                <p>Chronic disease management involves ongoing care and support to help individuals manage their chronic
+                    health conditions, improve their quality of life, and reduce the risk of complications.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How can HealthBuddy help me?</h3>
+                <p>HealthBuddy provides tools and resources to help you monitor your health, manage medications,
+                    schedule appointments, and access telehealth services, all in one place.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Is HealthBuddy free to use?</h3>
+                <p>HealthBuddy offers both free and premium plans. The free plan includes basic features, while the
+                    premium plan provides additional tools and services for comprehensive chronic disease management.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Health Facts Section -->
+    <div id="health-facts" class="container">
+        <h2 class="section-title">Health Facts</h2>
+        <div class="health-facts">
+            <div class="fact-item">
+                <h3>Fact 1</h3>
+                <p>Regular physical activity can help prevent chronic diseases such as heart disease, stroke, diabetes,
+                    and some cancers.</p>
+            </div>
+            <div class="fact-item">
+                <h3>Fact 2</h3>
+                <p>Eating a balanced diet with plenty of fruits and vegetables can improve your overall health and
+                    reduce the risk of chronic diseases.</p>
+            </div>
+            <div class="fact-item">
+                <h3>Fact 3</h3>
+                <p>Managing stress through activities like meditation, yoga, and deep breathing can improve your mental
+                    and physical health.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 HealthBuddy. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Contact Us</a></p>
+    </footer>
+    <button class="chatbot-toggler">
+        <span class="material-symbols-rounded">mode_comment</span>
+        <span class="material-symbols-outlined">close</span>
+    </button>
+    <div class="chatbot">
+        <header>
+            <h2>Chatbot</h2>
+            <span class="close-btn material-symbols-outlined">close</span>
+        </header>
+        <ul class="chatbox">
+            <li class="chat incoming">
+                <span class="material-symbols-outlined">smart_toy</span>
+                <p>Hi there 👋<br />How can I help you today?</p>
+            </li>
+        </ul>
+        <div class="chat-input">
+            <textarea placeholder="Enter a message..." spellcheck="false" required></textarea>
+            <span id="send-btn" class="material-symbols-rounded">send</span>
+        </div>
+    </div>
+    <script src="scripts/script.js"></script>
 </body>
+
 </html>
