@@ -116,11 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           console.log("Patient signed in:", userCredential.user);
-          if (userType === "patient") {
-            window.location.href = "pat-login.html";
-          } else if (userType === "doctor") {
-            window.location.href = "doc-login.html";
-          }
+          window.location.href = "pat-login.html";
         })
         .catch((error) => {
           console.error("Patient login error:", error);
