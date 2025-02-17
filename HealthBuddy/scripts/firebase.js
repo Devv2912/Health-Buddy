@@ -26,10 +26,6 @@ const provider = new GoogleAuthProvider();
 
 document.addEventListener('DOMContentLoaded', () => {
   // Google Login Implementation
-  
-
-  // Patient Signup Implementation
-  const patientForm = document.querySelector('#patient-form');
   const googleBtn = document.querySelector('.google-login');
   if (googleBtn) {
     googleBtn.addEventListener('click', () => {
@@ -44,6 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
   }
+
+  // Patient Signup Implementation
+  const patientForm = document.querySelector('#patient-form');
   if (patientForm) {
     patientForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -77,20 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Doctor Signup Implementation
   const doctorForm = document.querySelector('#doctor-form');
-  const googleBtn = document.querySelector('.google-login');
-  if (googleBtn) {
-    googleBtn.addEventListener('click', () => {
-      signInWithPopup(auth, provider)
-        .then((result) => {
-          const user = result.user;
-          console.log("User signed in with Google:", user);
-          window.location.href = "doc-login.html";
-        })
-        .catch((error) => {
-          console.error("Error during Google sign in:", error);
-        });
-    });
-  }
   if (doctorForm) {
     doctorForm.addEventListener('submit', (e) => {
       e.preventDefault();
