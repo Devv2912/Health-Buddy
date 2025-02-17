@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const firstName = patientForm.querySelector("input[placeholder='First Name']").value;
       const lastName = patientForm.querySelector("input[placeholder='Last Name']").value;
-      const fullName = ${firstName} ${lastName};
+      const fullName = `${firstName} ${lastName}`;
       const email = patientForm.querySelector("input[type='email']").value;
       const password = patientForm.querySelector("input[type='password']").value;
       const phone = patientForm.querySelector("input[placeholder='Phone Number']").value;
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const firstName = doctorForm.querySelector("input[placeholder='First Name']").value;
       const lastName = doctorForm.querySelector("input[placeholder='Last Name']").value;
-      const fullName = ${firstName} ${lastName};
+      const fullName = `${firstName} ${lastName}`;
       const email = doctorForm.querySelector("input[type='email']").value;
       const password = doctorForm.querySelector("input[type='password']").value;
       
@@ -143,3 +143,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
