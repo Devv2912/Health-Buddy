@@ -33,8 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then((result) => {
           const user = result.user;
           console.log("User signed in with Google:", user);
-            window.location.href = "pat-login.html";
-          // Optionally redirect the user after a successful Google login
+          window.location.href = "pat-login.html";
         })
         .catch((error) => {
           console.error("Error during Google sign in:", error);
@@ -117,7 +116,11 @@ document.addEventListener('DOMContentLoaded', () => {
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           console.log("Patient signed in:", userCredential.user);
-          window.location.href = "pat-login.html";
+          if (userType === "patient") {
+            window.location.href = "pat-login.html";
+          } else if (userType === "doctor") {
+            window.location.href = "doc-login.html";
+          }
         })
         .catch((error) => {
           console.error("Patient login error:", error);
