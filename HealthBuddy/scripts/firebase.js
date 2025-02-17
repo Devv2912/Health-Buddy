@@ -25,18 +25,48 @@ const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
 document.addEventListener('DOMContentLoaded', () => {
+  let selectedUserType = null; // Track whether the user is Patient or Doctor
+
+  // Get buttons and forms
+  const patientBtn = document.getElementById("patient-btn");
+  const doctorBtn = document.getElementById("doctor-btn");
+  const googleBtn = document.querySelector(".google-login"); 
+
+  // Function to track selection
+  function setUserType(userType) {
+    selectedUserType = userType;
+  }
+
+  // Event listeners for user selection
+  if (patientBtn) {
+    patientBtn.addEventListener("click", () => setUserType("patient"));
+  }
+  if (doctorBtn) {
+    doctorBtn.addEventListener("click", () => setUserType("doctor"));
+  }
+
   // Google Login Implementation
-  const googleBtn = document.querySelector('.google-login');
   if (googleBtn) {
-    googleBtn.addEventListener('click', () => {
+    googleBtn.addEventListener("click", () => {
+      if (!selectedUserType) {
+        alert("Please select whether you are a patient or a doctor before logging in.");
+        return;
+      }
+
       signInWithPopup(auth, provider)
         .then((result) => {
           const user = result.user;
-          console.log("User signed in with Google:", user);
-          window.location.href = "pat-login.html";
+          console.log(`User signed in as ${selectedUserType}:`, user);
+
+          // Redirect based on selection
+          if (selectedUserType === "patient") {
+            window.location.href = "pat-login.html";
+          } else if (selectedUserType === "doctor") {
+            window.location.href = "doc-login.html";
+          }
         })
         .catch((error) => {
-          console.error("Error during Google sign in:", error);
+          console.error("Error during Google sign-in:", error);
         });
     });
   }
@@ -57,20 +87,13 @@ document.addEventListener('DOMContentLoaded', () => {
         .then((userCredential) => {
           const user = userCredential.user;
           updateProfile(user, { displayName: fullName })
-            .then(() => {
-              console.log("Patient display name set to:", fullName);
-            })
-            .catch((error) => {
-              console.error("Error updating patient display name:", error);
-            });
-          console.log("Patient signed up with phone:", phone);
+            .then(() => console.log("Patient display name set to:", fullName))
+            .catch((error) => console.error("Error updating patient display name:", error));
+
           console.log("Patient signed up:", user);
-          // Redirect to patient dashboard after signup
           window.location.href = "pat-login.html";
         })
-        .catch((error) => {
-          console.error("Error during patient sign up:", error);
-        });
+        .catch((error) => console.error("Error during patient sign up:", error));
     });
   }
 
@@ -89,58 +112,47 @@ document.addEventListener('DOMContentLoaded', () => {
         .then((userCredential) => {
           const user = userCredential.user;
           updateProfile(user, { displayName: fullName })
-            .then(() => {
-              console.log("Doctor display name set to:", fullName);
-            })
-            .catch((error) => {
-              console.error("Error updating doctor display name:", error);
-            });
+            .then(() => console.log("Doctor display name set to:", fullName))
+            .catch((error) => console.error("Error updating doctor display name:", error));
+
           console.log("Doctor signed up:", user);
-          // Redirect to doctor dashboard after signup
           window.location.href = "doc-login.html";
         })
-        .catch((error) => {
-          console.error("Error during doctor sign up:", error);
-        });
+        .catch((error) => console.error("Error during doctor sign up:", error));
     });
   }
   
-  // Patient Login Implementation (in login-btn-login.html)
-  // Assumes the "Patient Id" input contains the email used during sign up.
+  // Patient Login Implementation
   const patientLoginForm = document.querySelector('#patient-form');
   if (patientLoginForm) {
     patientLoginForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const email = patientLoginForm.querySelector("input[placeholder='Email']").value;
       const password = patientLoginForm.querySelector("input[placeholder='Password']").value;
+
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           console.log("Patient signed in:", userCredential.user);
           window.location.href = "pat-login.html";
         })
-        .catch((error) => {
-          console.error("Patient login error:", error);
-        });
+        .catch((error) => console.error("Patient login error:", error));
     });
   }
   
-  // Doctor Login Implementation (in login-btn-login.html)
-  // Assumes the "Doctor Id" input contains the email used during sign up.
+  // Doctor Login Implementation
   const doctorLoginForm = document.querySelector('#doctor-form');
   if (doctorLoginForm) {
     doctorLoginForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const email = doctorLoginForm.querySelector("input[placeholder='Email']").value;
       const password = doctorLoginForm.querySelector("input[placeholder='Password']").value;
+
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           console.log("Doctor signed in:", userCredential.user);
           window.location.href = "doc-login.html";
         })
-        .catch((error) => {
-          console.error("Doctor login error:", error);
-        });
+        .catch((error) => console.error("Doctor login error:", error));
     });
   }
 });
-
