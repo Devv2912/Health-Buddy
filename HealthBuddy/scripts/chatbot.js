@@ -16,7 +16,7 @@ const responses = {
   "what can you do": "I can answer simple questions! Try asking me about health, fitness, or general facts.",
   "who created you": "I was created by a developer to assist with your questions!",
   "tell me a joke": "Why did the computer go to the doctor? Because it had a virus!",
-  "what is 2 plus 2": "2 + 2 is 4!",
+  "2+2": "2 + 2 is 4!",
 
   // HealthBuddy Questions
   "what is healthbuddy": "HealthBuddy is a personalized companion for chronic disease management, offering tools for health monitoring, medication reminders, and more.",
